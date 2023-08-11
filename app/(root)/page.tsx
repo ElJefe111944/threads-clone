@@ -1,15 +1,8 @@
-// pages/example.tsx
-import { UserButton } from "@clerk/nextjs";
-
-
  
-export default function Example() {
+export default function Home() {
   return (
     <>
-			<header>
-				<UserButton afterSignOutUrl="/"/>
-			</header>
-			<div>Your page's content can go here.</div>
+      <h1 className="head-text text-left">Home</h1>
     </>
   );
 }
