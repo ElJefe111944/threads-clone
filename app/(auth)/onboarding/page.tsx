@@ -1,6 +1,11 @@
 import AccountProfile from "@/components/forms/AccountProfile";
+import { currentUser } from '@clerk/nextjs';
 
 async function Page(){
+
+    const user = await currentUser();
+    console.log(user);
+
     return (
         <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
             <h1 className="head-text">OnBoarding</h1>

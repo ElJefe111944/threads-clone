@@ -1,5 +1,9 @@
+'use client'
 
-
-export default function AccountProfile() {
-  return <div>Account Profile</div>;
+const AccountProfile = () => {
+  return (
+    <div>AccountProfile</div>
+  )
 }
+
+export default AccountProfile
