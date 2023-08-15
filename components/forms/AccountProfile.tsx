@@ -31,15 +31,15 @@ interface UserProps {
   btnTitle: string;
 }
 
-const AccountProfile = ({ user, btnTitle }): UserProps => {
+const AccountProfile = ({ user, btnTitle }: UserProps) => {
 
   const form = useForm({
     resolver: zodResolver(UserValidation),
     defaultValues: {
-      profile_photo: '',
-      name: '',
-      username: '',
-      bio: '',
+      profile_photo: user?.image || '',
+      name: user?.name || '',
+      username: user?.username || '',
+      bio: user?.bio || '',
     }
   });
 
@@ -115,11 +115,11 @@ const AccountProfile = ({ user, btnTitle }): UserProps => {
           name="username"
           render={({ field }) => (
             <FormItem className="flex gap-3 w-full flex-col">
-            <FormLabel className="text-base-semibold text-light-2">Username:</FormLabel>
-            <FormControl>
+              <FormLabel className="text-base-semibold text-light-2">Username:</FormLabel>
+              <FormControl>
                 <Input
                   className="account-form_input no-focus"
-                    type="text"
+                  type="text"
                   {...field}
                 />
               </FormControl>
@@ -132,8 +132,8 @@ const AccountProfile = ({ user, btnTitle }): UserProps => {
           name="bio"
           render={({ field }) => (
             <FormItem className="flex gap-3 w-full flex-col">
-            <FormLabel className="text-base-semibold text-light-2">Bio:</FormLabel>
-            <FormControl>
+              <FormLabel className="text-base-semibold text-light-2">Bio:</FormLabel>
+              <FormControl>
                 <Textarea
                   className="account-form_input no-focus"
                   {...field}
