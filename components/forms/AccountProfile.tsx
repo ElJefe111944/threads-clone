@@ -18,6 +18,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { UserValidation } from "@/lib/validations/user";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
+import { isBase64Image } from "@/lib/utils";
+
 
 interface UserProps {
   user: {
@@ -68,7 +70,14 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
   };
 
   function onSubmit(values: z.infer<typeof UserValidation>) {
-    console.log(values)
+    const blob = values.profile_photo;
+
+    const hasImageChanged = isBase64Image(blob);
+
+    if(hasImageChanged){
+
+    }
+
   }
 
   return (
