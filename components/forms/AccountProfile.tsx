@@ -58,12 +58,12 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
 
     const fileReader = new FileReader();
 
-    if(e.target.files && e.target.files.length > 0){
+    if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
 
       setFiles(Array.from(e.target.files));
 
-      if(!file.type.includes('image')) return;
+      if (!file.type.includes('image')) return;
 
       fileReader.onload = async (event) => {
         const imageDataUrl = event.target?.result?.toString() || '';
@@ -80,10 +80,10 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
 
     const hasImageChanged = isBase64Image(blob);
 
-    if(hasImageChanged){
+    if (hasImageChanged) {
       const imageResponse = await startUpload(files);
 
-      if(imageResponse && imageResponse[0].url){
+      if (imageResponse && imageResponse[0].url) {
         values.profile_photo = imageResponse[0].url;
       }
     }
@@ -97,7 +97,7 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
       path: pathname,
     });
 
-    if(pathname === '/profile/edit'){
+    if (pathname === '/profile/edit') {
       router.back();
     } else {
       router.push('/');
@@ -142,6 +142,7 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
                   onChange={(e) => handleImage(e, field.onChange)}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -159,6 +160,7 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -176,6 +178,7 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -188,11 +191,12 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
               <FormLabel className="text-base-semibold text-light-2">Bio:</FormLabel>
               <FormControl>
                 <Textarea
-                rows={10}
+                  rows={10}
                   className="account-form_input no-focus"
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
