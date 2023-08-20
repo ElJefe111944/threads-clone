@@ -47,7 +47,7 @@ export default function PostThread({ userId }: { userId: string }) {
     });
 
     const onSubmit = () => {
-        
+
     };
 
     return (
@@ -57,7 +57,7 @@ export default function PostThread({ userId }: { userId: string }) {
                     control={form.control}
                     name="thread"
                     render={({ field }) => (
-                        <FormItem className="flex gap-3 w-full flex-col">
+                        <FormItem className="mt-10 flex gap-3 w-full flex-col">
                             <FormLabel className="text-base-semibold text-light-2">Content:</FormLabel>
                             <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
                                 <Textarea
@@ -69,6 +69,9 @@ export default function PostThread({ userId }: { userId: string }) {
                         </FormItem>
                     )}
                 />
+                <Button type="submit" className="bg-primary-500">
+                        Post Thread
+                </Button>
             </form>
         </Form>
     )
