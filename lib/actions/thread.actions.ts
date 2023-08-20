@@ -33,3 +33,7 @@ export async function createThread({ text, author, communityId, path }: Params){
         throw new Error(`Error creating thread: ${error}`);
     }
 };
+
+export async function fetchPosts(){
+    
+};
