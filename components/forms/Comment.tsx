@@ -11,12 +11,11 @@ import {
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { CommentValidation } from "@/lib/validations/thread";
-import { createThread } from "@/lib/actions/thread.actions";
 import { usePathname, useRouter } from "next/navigation";
+import { addCommentToThread } from "@/lib/actions/thread.actions";
 import Image from "next/image";
 
 interface CommentProps {
@@ -27,25 +26,24 @@ interface CommentProps {
 
 export default function Comment({ threadId, currentUserId, currentUserImg }: CommentProps) {
 
-  const router = useRouter();
   const pathname = usePathname();
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof CommentValidation>>({
     resolver: zodResolver(CommentValidation),
     defaultValues: {
-      thread: '',
-    }
+      thread: "",
+    },
   });
 
   const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
-    // await createThread({
-    //   text: values.thread,
-    //   author: userId,
-    //   communityId: null,
-    //   path: pathname,
-    // });
+    await addCommentToThread(
+      threadId, 
+      values.thread, 
+      JSON.parse(currentUserId), 
+      pathname
+    );
 
-    router.push('/');
+    form.reset();
   };
 
   return (

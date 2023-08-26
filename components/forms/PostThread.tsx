@@ -37,13 +37,13 @@ export default function PostThread({ userId }: { userId: string }) {
     const router = useRouter();
     const pathname = usePathname();
 
-    const form = useForm({
+    const form = useForm<z.infer<typeof ThreadValidation>>({
         resolver: zodResolver(ThreadValidation),
         defaultValues: {
-            thread: '',
-            accountId: userId,
-        }
-    });
+          thread: "",
+          accountId: userId,
+        },
+      });
 
     const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
          await createThread({
