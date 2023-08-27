@@ -16,9 +16,16 @@ async function page({ params }: { params: { id: string } }) {
 
   return (
     <section>
-      <ProfileHeader />
+      <ProfileHeader 
+        accountId={userInfo.id}
+        authUserId={user.id}
+        name={userInfo.name}
+        username={userInfo.username}
+        imgUrl={userInfo.image}
+        bio={userInfo.bio}
+      />
     </section>
   )
 }
 
-export default page
+export default page  
