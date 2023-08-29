@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ThreadsTab from "@/components/shared/ThreadsTab";
 import { currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
 import { fetchUser } from "@/lib/actions/user.actions";
@@ -45,6 +46,15 @@ async function page({ params }: { params: { id: string } }) {
               </TabsTrigger>
             ))}
           </TabsList>
+          {profileTabs.map((tab) => (
+            <TabsContent className="w-full text-light-1" value={tab.value} key={tab.value}>
+              <ThreadsTab 
+                currentId={user.id}
+                accountId={userInfo.id}
+                accountType='User'
+              />
+            </TabsContent>
+          ))}
           <TabsContent className="text-white" value="threads">Threads</TabsContent>
           <TabsContent className="text-white" value="replies">Replies</TabsContent>
           <TabsContent className="text-white" value="tagged">Tagged</TabsContent>
