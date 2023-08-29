@@ -49,7 +49,7 @@ async function page({ params }: { params: { id: string } }) {
           {profileTabs.map((tab) => (
             <TabsContent className="w-full text-light-1" value={tab.value} key={tab.value}>
               <ThreadsTab 
-                currentId={user.id}
+                currentUserId={user.id}
                 accountId={userInfo.id}
                 accountType='User'
               />
