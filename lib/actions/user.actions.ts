@@ -122,7 +122,22 @@ export async function fetchUsers({
             ]
         };
 
+        const sortOptions = { createdAt: sortBy };
+
+        const userQuery = User.find(query)
+            .sort(sortOptions)
+            .skip(skipAmount)
+            .limit(pageSize)
+
+        // for total number of pages for user 
+        const totalUserCount = await User.countDocuments(query);
+        const users = await userQuery.exec();
+
+        const isNext = totalUserCount > skipAmount + users.length;
+
+        return { users, isNext };
+
     }catch (error){
-        console.log(error);
+        throw new Error(`Failed to fetch users: ${error}`);
     }
 };
