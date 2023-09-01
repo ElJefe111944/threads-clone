@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import ThreadsTab from "@/components/shared/ThreadsTab";
+import UserCard from "@/components/cards/UserCard";
 import { currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
@@ -39,7 +40,7 @@ const page = async () => {
                     <>
                         {result.users.map((user) => (
                             <UserCard 
-                                
+
                             />
                         ))}
                     </>
