@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
-import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
+import { fetchUser, getActivity } from "@/lib/actions/user.actions";
 
 
 const page = async () => {
@@ -13,7 +13,7 @@ const page = async () => {
 
   if (!userInfo?.onboarded) redirect('/onboarding');
 
-  
+  const activity = await getActivity(userInfo._id);
 
   return (
     <section>
