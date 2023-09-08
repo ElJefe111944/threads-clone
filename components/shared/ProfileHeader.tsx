@@ -8,9 +8,10 @@ interface ProfileHeaderProps {
     username: string;
     imgUrl: string;
     bio: string;
+    type?: 'User' | 'Community';
 }
 
-const ProfileHeader = ({ accountId, authUserId, name, username, imgUrl, bio }: ProfileHeaderProps) => {
+const ProfileHeader = ({ accountId, authUserId, name, username, imgUrl, bio, type }: ProfileHeaderProps) => {
 
 
     return (
