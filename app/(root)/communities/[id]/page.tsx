@@ -6,6 +6,7 @@ import { communityTabs } from "@/constants";
 
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { fetchCommunityDetails } from "@/lib/actions/community.actions";
+import UserCard from "@/components/cards/UserCard";
 
 
 async function page({ params }: { params: { id: string } }) {
@@ -53,11 +54,18 @@ async function page({ params }: { params: { id: string } }) {
                         />
                     </TabsContent>
                     <TabsContent className="w-full text-light-1" value='members'>
-                        <ThreadsTab
-                            currentUserId={user.id}
-                            accountId={communityDetails._id}
-                            accountType='Community'
-                        />
+                        <section className="mt-9 flex flex-col gap-10">
+                             {communityDetails?.members.map((member: any) => (
+                                <UserCard 
+                                    key={member.id}
+                                    id={member.id}
+                                    name={member.name}
+                                    username={member.username}
+                                    imgUrl={member.image}
+                                    personType="User"
+                                />
+                             ))}               
+                        </section>
                     </TabsContent>
                     <TabsContent className="w-full text-light-1" value='requests'>
                         <ThreadsTab
