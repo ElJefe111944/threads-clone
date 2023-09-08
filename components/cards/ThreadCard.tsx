@@ -75,7 +75,8 @@ export default function ThreadCard({
               {/* delete thread  */}
               {/* show comment logos */}
 
-              {!isComment && community && (
+          </div>
+          {!isComment && community && (
                 <Link href={`/communities/${community.id}`} className="mt-5 flex items-center">
                     <p className="text-gray-1 text-subtle-medium">
                         {formatDateString(createdAt)} - {community.name} Community
@@ -89,7 +90,6 @@ export default function ThreadCard({
                     />
                 </Link>
               )}
-          </div>
       </article>
   );
 }
