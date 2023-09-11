@@ -5,6 +5,7 @@ import { currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchCommunities } from "@/lib/actions/community.actions";
+import CommunityCard from "@/components/cards/CommunityCard";
 
 
 const page = async () => {
@@ -38,13 +39,14 @@ const page = async () => {
                 ) : (
                     <>
                         {result.communities.map((community) => (
-                            <UserCard 
+                            <CommunityCard
                                 key={community.id}
                                 id={community.id}
                                 name={community.name}
                                 username={community.username}
                                 imgUrl={community.image}
-                                personType='Community'
+                                bio={community.bio}
+                                members={community.members}              
                             />
                         ))}
                     </>
