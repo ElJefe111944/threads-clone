@@ -6,7 +6,9 @@ import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import SearchBar from "@/components/shared/SearchBar";
 
 
-const page = async () => {
+const page = async ({ searchParams }: {
+    searchParams: { [key: string]: string | undefined };
+}) => {
 
     const user = await currentUser();
 
@@ -19,7 +21,7 @@ const page = async () => {
     // fetch users
     const result = await fetchUsers({
         userId: user.id,
-        searchString: '',
+        searchString: searchParams.q,
         pageNumber: 1,
         pageSize: 25,
     });
