@@ -76,6 +76,20 @@ export default function ThreadCard({
               {/* show comment logos */}
 
           </div>
+          {!isComment && comments.length > 0 && (
+                <div className="ml-1 mt-3 flex items-center gap-2"> 
+                    {comments.slice(0,2).map((comment,index) => (
+                        <Image 
+                            key={index}
+                            src={comment.author.image}
+                            alt={`user_${index}`}
+                            width={24}
+                            height={24}
+                            className={`${index !== 0 && "-ml-5"} rounded-full object-cover`}
+                        />
+                    ))}
+                </div>
+              )}
           {!isComment && community && (
                 <Link href={`/communities/${community.id}`} className="mt-5 flex items-center">
                     <p className="text-gray-1 text-subtle-medium">
