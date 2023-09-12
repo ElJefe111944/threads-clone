@@ -72,9 +72,9 @@ export default function ThreadCard({
                         </div>
                     </div>
                 </div>
-            {/* delete thread  */}
+                {/* delete thread  */}
             </div>
-             {/* show comment logos */}
+            {/* show comment logos */}
             {!isComment && comments.length > 0 && (
                 <div className="ml-1 mt-3 flex items-center gap-2">
                     {comments.slice(0, 2).map((comment, index) => (
@@ -84,16 +84,16 @@ export default function ThreadCard({
                             alt={`user_${index}`}
                             width={24}
                             height={24}
-                            className={`${index !== 0 && "-ml-5"} rounded-full object-cover`}
+                            className={`${index !== 0 && "-ml-5"} rounded-full object-cover h-6`}
                         />
                     ))}
-                                <Link href={`/thread/${id}`}>
-                <p className="mt-1 text-subtle-medium text-gray-1">
-                    {comments.length} repl{comments.length > 1 ? "ies" : "y"}
-                </p>
-            </Link>   
+                    <Link href={`/thread/${id}`}>
+                        <p className="mt-1 text-subtle-medium text-gray-1">
+                            {comments.length} repl{comments.length > 1 ? "ies" : "y"}
+                        </p>
+                    </Link>
                 </div>
-            )}       
+            )}
 
             {!isComment && community && (
                 <Link href={`/communities/${community.id}`} className="mt-5 flex items-center">
