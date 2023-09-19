@@ -121,7 +121,7 @@ const AccountProfile = ({ user, btnTitle }: UserProps) => {
                     height={96}
                     alt="profile photo"
                     priority
-                    className="rounded-full object-contain"
+                    className="rounded-full object-cover h-24"
                   />
                 ) : (
                   <Image
